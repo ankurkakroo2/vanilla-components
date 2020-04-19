@@ -1,3 +1,11 @@
 body {
-  font-family: sans-serif;
+  font-family: "Roboto Mono", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Roboto Mono";
+  font-size: 40px;
 }

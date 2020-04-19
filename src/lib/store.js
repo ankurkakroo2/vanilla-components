@@ -1,6 +1,11 @@
 import PubSub from "./rx";
 
-const Store = ({ initialState = {}, actions, mutations } = {}) => {
+const Store = ({
+  initialState = {},
+  actions,
+  reducers,
+  initialActions
+} = {}) => {
   let state = initialState;
   const events = PubSub();
 
@@ -21,11 +26,11 @@ const Store = ({ initialState = {}, actions, mutations } = {}) => {
   };
 
   const setState = (key, payload) => {
-    if (typeof mutations[key] !== "function") {
+    if (typeof reducers[key] !== "function") {
       console.log(`State "${key}" doesn't exist`);
       return false;
     }
-    let newState = mutations[key](state, payload);
+    let newState = reducers[key](state, payload);
     state = Object.assign({}, state, newState);
     events.notify("stateChange", state); //TODO: action name should be dynamic
     console.log(`Updated State`, state);

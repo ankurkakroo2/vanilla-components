@@ -1,6 +1,30 @@
-:root {
-  --color: red;
-}
 .base {
-  background-color: var(--color);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  height: 2.6rem;
+  padding: 11px;
+  border-radius: 0;
+  position: relative;
+  max-width: 20rem;
+  margin: 0;
+}
+
+.primary {
+  background-color: var(--primary-1);
+  color: #fff;
+}
+
+.primary:hover {
+  background-color: var(--primary-2);
+}
+
+.secondary {
+  background-color: var(--secondary-1);
+  color: #fff;
+}
+
+.small {
+  height: 2rem;
+  padding: 6px 10px;
 }

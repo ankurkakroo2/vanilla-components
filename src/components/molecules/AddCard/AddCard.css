@@ -1,0 +1,7 @@
+.base {
+  display: flex;
+}
+
+.base input {
+  margin-right: 1rem;
+}

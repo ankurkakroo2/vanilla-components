@@ -1,8 +1,5 @@
-const actions = {
-  addItem: data => ({
-    type: "addItem",
-    data
-  })
-};
+import TodoActions from "../containers/Todo/actions";
 
-export default actions;
+export default {
+  ...TodoActions
+};

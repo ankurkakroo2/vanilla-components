@@ -1,6 +1,5 @@
+import TodoReducer from "../containers/Todo/reducer";
+
 export default {
-  addItem(state, payload) {
-    console.log("abc", state);
-    return payload;
-  }
+  ...TodoReducer
 };
