@@ -5,6 +5,7 @@ import Store from "./lib/store";
 import reducers from "./lib/reducers";
 import actions from "./lib/actions";
 import storeHelpers from "./util/storeHelpers";
+import bindEvents from "./lib/events";
 
 const { dispatch, observable } = Store({
   reducers: reducers,
@@ -13,9 +14,9 @@ const { dispatch, observable } = Store({
 
 storeHelpers.set(dispatch, observable);
 
-observable.subscribe("stateChange", state => {
-  console.log("main calkled");
+storeHelpers.getObservable().subscribe("stateChange", state => {
   Todo(state);
+  bindEvents();
 });
 
-Todo(); //TODO: this should not be needed. trigger statechange initially
+dispatch(actions.initApp()); // Better composition for dispatch

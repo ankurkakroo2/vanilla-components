@@ -1,11 +1,6 @@
 import PubSub from "./rx";
 
-const Store = ({
-  initialState = {},
-  actions,
-  reducers,
-  initialActions
-} = {}) => {
+const Store = ({ initialState = {}, actions, reducers } = {}) => {
   let state = initialState;
   const events = PubSub();
 

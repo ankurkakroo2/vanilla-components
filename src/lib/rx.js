@@ -1,7 +1,7 @@
-function pubSub() {
+const pubSub = () => {
   const observers = {};
 
-  function notify(eventName, data) {
+  const notify = (eventName, data) => {
     if (!Array.isArray(observers[eventName])) {
       return;
     }
@@ -10,9 +10,9 @@ function pubSub() {
     observers[eventName].forEach(callback => {
       callback(data);
     });
-  }
+  };
 
-  function subscribe(eventName, callback) {
+  const subscribe = (eventName, callback) => {
     if (!Array.isArray(observers[eventName])) {
       observers[eventName] = [];
     }
@@ -21,16 +21,16 @@ function pubSub() {
     const index = observers[eventName].length - 1;
 
     return {
-      unsubscribe() {
+      unsubscribe: () => {
         observers[eventName].splice(index, 1);
       }
     };
-  }
+  };
 
   return {
     notify,
     subscribe
   };
-}
+};
 
 export default pubSub;
