@@ -1,31 +1,31 @@
-const addChildItem = (state, payload, idx = 0) => {
-  const ref = payload.parent.split("-");
-  console.log("ref", ref);
+const addChildItem = (state, payload, ref, idx = 0) => {
+  //TODO: First pass- Revisit this function to improve this
   if (ref.length === 1) {
-    if (!state[ref[0]].todos) state[ref[0]].todos = [];
-    state[ref[0]].todos.push(payload.item);
+    const currState = state[ref[0]];
+    if (!currState.todos) currState.todos = [];
+    currState.todos.push(payload.item);
   } else {
-    //TODO: Revisit
-    if (idx <= ref.length) {
-      addChildItem(state[idx], payload, ++idx);
+    if (idx < ref.length) {
+      const currState = state[ref[idx]];
+      if (!currState.todos) currState.todos = [];
+      addChildItem(currState.todos, payload, ref, ++idx);
     } else {
-      if (!state.todos) state.todos = [];
-      state.todos.push(payload.item);
+      state.push(payload.item);
     }
   }
 };
+
 const reducer = {
   addItem: ({ ...state }, payload) => {
-    console.log("abc", payload);
+    const ref = payload.parent.split("-");
+
     if (payload.parent === "root") {
       if (!state.todos) {
         state.todos = [];
-        state.todos.push(payload.item);
-      } else {
-        state.todos.push(payload.item); //TODO: Better code here
       }
+      state.todos.push(payload.item); //TODO: Better code here
     } else {
-      addChildItem(state.todos, payload);
+      addChildItem(state.todos, payload, ref);
     }
 
     return state;
