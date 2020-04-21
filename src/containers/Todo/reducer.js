@@ -17,6 +17,7 @@ const addChildItem = (state, payload, ref, idx = 0) => {
 
 const reducer = {
   addItem: ({ ...state }, payload) => {
+    // state is mutating. Fix this.
     const ref = payload.parent.split("-");
 
     if (payload.parent === "root") {
@@ -29,6 +30,10 @@ const reducer = {
     }
 
     return state;
+  },
+  deleteItem: () => {
+    console.log("delete item here");
+    return {};
   }
 };
 

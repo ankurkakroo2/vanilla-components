@@ -4,4 +4,9 @@ const addItem = data => ({
   ...data
 });
 
-export default { addItem };
+const deleteItem = data => ({
+  type: "deleteItem",
+  ...data
+});
+
+export default { addItem, deleteItem };

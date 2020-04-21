@@ -2,6 +2,7 @@ import styles from "./CardList.css";
 import Card from "../Card";
 
 const getCards = (todos, prevId = "") => {
+  //TODO: think of a better way
   let cards = "";
   let currId = "";
   for (let i = 0; i < todos.length; i++) {
