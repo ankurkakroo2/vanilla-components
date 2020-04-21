@@ -26,6 +26,6 @@ Card.init = () => {
       };
     }
   }
-};
+}
 
 export default Card;

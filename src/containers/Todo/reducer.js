@@ -30,10 +30,6 @@ const reducer = {
     }
 
     return state;
-  },
-  deleteItem: () => {
-    console.log("delete item here");
-    return {};
   }
 };
 
