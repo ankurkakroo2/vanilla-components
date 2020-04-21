@@ -16,7 +16,7 @@ storeHelpers.set(dispatch, observable);
 
 storeHelpers.getObservable().subscribe("stateChange", state => {
   Todo(state);
-  bindEvents();
+  bindEvents(); //TODO: clear old events
 });
 
 dispatch(actions.initApp()); // Better composition for dispatch
